@@ -115,7 +115,9 @@ function startMain () {
 }
 
 function startElectron () {
+  const remoteDebuggingPort = 22222;
   var args = [
+    `--remote-debugging-port=${remoteDebuggingPort}`,
     '--inspect=5858',
     path.join(__dirname, '../dist/electron/main.js')
   ]
@@ -139,6 +141,8 @@ function startElectron () {
   electronProcess.on('close', () => {
     if (!manualRestart) process.exit()
   })
+
+  console.log(`Electron remote debugging port: ${remoteDebuggingPort}`);
 }
 
 function electronLog (data, color) {
