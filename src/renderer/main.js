@@ -54,6 +54,8 @@ Vue.use(VueClipboard)
 Vue.use(Viser)
 Vue.use(VueParticles)
 
+if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
+
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts
 Vue.prototype.getItems = getItems

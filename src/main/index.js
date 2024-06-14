@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, globalShortcut } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -22,7 +22,12 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     height: 563,
     useContentSize: true,
-    width: 1000
+    width: 1000,
+    webPreferences: {
+      webSecurity: false,
+      nodeIntegration: true,
+      contextIsolation: false
+    }
   })
 
   mainWindow.loadURL(winURL)
@@ -32,7 +37,10 @@ function createWindow () {
   })
 }
 
-app.on('ready', createWindow)
+app.on('ready', () => {
+  createWindow()
+  registerShortcuts()
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -45,6 +53,19 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+function registerShortcuts() {
+  if (process.env.DEBUG_TYPE === 'true') {
+    globalShortcut.register('CommandOrControl+Shift+I', () => {
+      if (mainWindow) {
+        mainWindow.webContents.toggleDevTools();
+      }
+    });
+
+    console.log('Shortcut registered: CommandOrControl+Shift+I to toggle DevTools');
+  }
+}
+
 
 /**
  * Auto Updater
