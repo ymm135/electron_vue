@@ -21,6 +21,10 @@ const { VueLoaderPlugin } = require('vue-loader')
  */
 let whiteListedModules = ['vue']
 
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 let rendererConfig = {
   devtool: 'source-map',
   entry: {
@@ -101,6 +105,29 @@ let rendererConfig = {
             name: 'fonts/[name]--[folder].[ext]'
           }
         }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        exclude: resolve('src/renderer/icons/svg'),
+        use: {
+          loader: 'url-loader',
+          query: {
+            limit: 10000,
+            name: 'imgs/[name]--[folder].[ext]'
+          }
+        }
+      },
+      {
+        test: /\.svg$/,
+        include: resolve('src/renderer/icons/svg'),
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              symbolId: 'icon-[name]'
+            }
+          }
+        ]
       }
     ]
   },

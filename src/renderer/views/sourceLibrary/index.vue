@@ -177,7 +177,7 @@
 import { getleftList, delList, ifuploadList, uploadList, ifdownList, downList, copyList, moveList, renameList, addList, getfreesize, getAccess, previewAll, previewDetail, previewDoc, previewTxt } from '@/api/source'
 import { ifDanger, getBasicInfo } from '@/api/systemsetting'
 import TimeoutDialog from '@/components/USB/TimeoutDialog/index'
-import ModifyPassword from '../../../src/views/usblogin/components/modifyPassword.vue'
+import ModifyPassword from '@/views/usblogin/components/modifyPassword.vue'
 
 const fileTypeMap = {
   'xls': 'application/vnd.ms-excel',

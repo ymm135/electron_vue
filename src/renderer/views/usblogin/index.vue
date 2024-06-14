@@ -608,7 +608,7 @@ import store from '@/store'
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    background: url("../../assets/usb_images/login_back.webp") no-repeat;
+    background: url("../../assets/usb_images/login_back.png") no-repeat;
     background-color: #fff;
     position: relative;
     background-size: cover;
