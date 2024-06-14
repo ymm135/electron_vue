@@ -200,7 +200,7 @@ if (process.env.NODE_ENV !== 'production') {
  * Adjust rendererConfig for production settings
  */
 if (process.env.NODE_ENV === 'production') {
-  rendererConfig.devtool = ''
+  rendererConfig.devtool = 'source-map'
 
   rendererConfig.plugins.push(
     new MinifyPlugin(),

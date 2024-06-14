@@ -32,6 +32,9 @@ function createWindow () {
 
   mainWindow.loadURL(winURL)
 
+  // TODO 测试环境
+  mainWindow.webContents.toggleDevTools();
+
   mainWindow.on('closed', () => {
     mainWindow = null
   })
@@ -55,7 +58,6 @@ app.on('activate', () => {
 })
 
 function registerShortcuts() {
-  if (process.env.DEBUG_TYPE === 'true') {
     globalShortcut.register('CommandOrControl+Shift+I', () => {
       if (mainWindow) {
         mainWindow.webContents.toggleDevTools();
@@ -63,7 +65,6 @@ function registerShortcuts() {
     });
 
     console.log('Shortcut registered: CommandOrControl+Shift+I to toggle DevTools');
-  }
 }
 
 

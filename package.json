@@ -56,8 +56,6 @@
     }
   },
   "dependencies": {
-    "vue-electron": "^1.0.6",
-    "vuex-electron": "^1.0.0",
     "@riophae/vue-treeselect": "0.4.0",
     "@tinymce/tinymce-vue": "^3.2.2",
     "awe-dnd": "^0.3.4",
@@ -99,15 +97,18 @@
     "vue-codemirror": "^4.0.6",
     "vue-count-to": "1.0.13",
     "vue-cropper": "^0.5.5",
+    "vue-electron": "^1.0.6",
     "vue-particles": "^1.0.9",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "3.0",
     "vue-splitpane": "1.0.6",
     "vuedraggable": "2.24.0",
     "vuex": "3.5.1",
+    "vuex-electron": "^1.0.0",
     "vuex-persistedstate": "^4.1.0",
     "webpack-bundle-analyzer": "^3.8.0",
-    "xlsx": "0.16.5"
+    "xlsx": "0.16.5",
+    "babel-register": "^6.26.0"
   },
   "devDependencies": {
     "@vue/composition-api": "^1.7.2",
@@ -121,7 +122,6 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.26.0",
     "cfonts": "^2.1.2",
     "chai": "^4.1.2",
     "chalk": "^2.4.1",
