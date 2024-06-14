@@ -1,0 +1,316 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './btn.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+// label {
+//   font-weight: 700;
+// }
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+aside {
+  background: #eef1f6;
+  padding: 8px 24px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  display: block;
+  line-height: 32px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a {
+    color: #337ab7;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+//main-container全局样式
+.app-container {
+  padding: 20px;
+}
+
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+.pagination-container {
+  margin-top: 30px;
+}
+
+.text-center {
+  text-align: center
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
+
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &.draft {
+    background: #d0d0d0;
+  }
+
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+
+.filter-container {
+  padding-bottom: 10px;
+
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}
+
+
+.el-card__header{
+  padding: 15px!important;
+  box-sizing: border-box;
+}
+.el-card__body{
+  padding: 20px!important;
+}
+
+.el-card + .el-card{
+  margin-top: 10px;
+}
+
+.container-padding-body2 {
+  background: #ffffff;
+}
+
+.container-padding-body-wrapper {
+  padding: 16px 0;
+}
+
+.container-padding-body-wrapper2 {
+  padding: 18px 22px;
+}
+
+.container-padding-body-wrapper .title {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+//分页
+.gva-pagination {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.gva-pagination .el-pagination__editor .el-input__inner {
+  height: 32px;
+}
+
+.gva-pagination .el-pagination__total {
+  line-height: 32px !important;
+}
+
+.gva-pagination .btn-prev {
+  padding-right: 6px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+}
+
+.gva-pagination .number {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+}
+
+.gva-pagination .btn-quicknext {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+}
+
+.gva-pagination .btn-next {
+  padding-left: 6px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gva-pagination .btn-next:hover, .gva-pagination .btn-next:visited, .gva-pagination .btn-prev:hover, .gva-pagination .btn-prev:visited {
+  color: #F26521;
+}
+
+.el-pagination button:disabled:hover {
+  color: #C0C4CC;
+}
+
+.gva-pagination .active {
+  border-radius: 2px;
+}
+
+.gva-pagination .el-pagination__sizes .el-input .el-input__suffix {
+  margin-top: 2px;
+}
+
+// 抽屉样式
+.formDrawer .el-form-item__label{
+  float: none;
+  word-break: break-word;
+  color: #17243E;
+}
+
+.form-drawer__footer {
+  width: 30%;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+  padding: 10px 24px;
+  border-top: 1px solid rgba(157, 166, 194, 0.3);
+  z-index: 1000;
+}
+
+.el-drawer__header {
+  padding: 14px 24px;
+  color: #000;
+  border-bottom: 1px solid rgba(157, 166, 194, 0.3);
+  margin-bottom: 0;
+}
+
+.el-switch.is-checked .el-switch__core {
+  border-color: #f26521 !important;
+  background-color: #f26521 !important;
+}

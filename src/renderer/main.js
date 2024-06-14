@@ -1,18 +1,109 @@
 import Vue from 'vue'
-import axios from 'axios'
+
+import Cookies from 'js-cookie'
+
+import 'normalize.css/normalize.css' // a modern alternative to CSS resets
+
+import Element from 'element-ui'
+import '@/styles/element-variables.scss'
+import 'element-ui/lib/theme-chalk/index.css'
+
+import '@/styles/index.scss' // global css
+import '@/styles/admin.scss'
+
+import VueCodemirror from 'vue-codemirror'
+import 'codemirror/lib/codemirror.css'
+
+import VueClipboard from 'v-clipboard'
 
 import App from './App'
-import router from './router'
 import store from './store'
+import router from './router'
+import permission from './directive/permission'
+import $ from 'jquery'
 
-if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
-Vue.http = Vue.prototype.$http = axios
+// import elTableInfiniteScroll from 'el-table-infinite-scroll'
+
+// Vue.use(elTableInfiniteScroll);
+
+import { getDicts } from '@/api/admin/dict/data'
+import { getItems, setItems } from '@/api/table'
+import { getConfigKey } from '@/api/admin/sys-config'
+import { parseTime, resetForm, addDateRange, selectDictLabel, /* download, */ selectItemsLabel } from '@/utils/costum'
+
+import './icons' // icon
+import './permission' // permission control
+import './utils/error-log' // error log
+
+import Viser from 'viser-vue'
+
+import * as filters from './filters' // global filters
+
+import Pagination from '@/components/Pagination'
+import BasicLayout from '@/layout/BasicLayout'
+
+import VueParticles from 'vue-particles'
+
+import '@/utils/dialog'
+
+import VueDND from 'awe-dnd'
+
+import 'remixicon/fonts/remixicon.css'
+Vue.use(VueCodemirror)
+Vue.use(VueClipboard)
+Vue.use(Viser)
+Vue.use(VueParticles)
+
+// 全局方法挂载
+Vue.prototype.getDicts = getDicts
+Vue.prototype.getItems = getItems
+Vue.prototype.setItems = setItems
+Vue.prototype.getConfigKey = getConfigKey
+Vue.prototype.parseTime = parseTime
+Vue.prototype.resetForm = resetForm
+Vue.prototype.addDateRange = addDateRange
+Vue.prototype.selectDictLabel = selectDictLabel
+Vue.prototype.selectItemsLabel = selectItemsLabel
+// Vue.prototype.download = download
+
+// 全局组件挂载
+Vue.component('Pagination', Pagination)
+Vue.component('BasicLayout', BasicLayout)
+
+Vue.prototype.msgSuccess = function (msg) {
+  this.$message({ showClose: true, message: msg, type: 'success' })
+}
+
+Vue.prototype.msgError = function (msg) {
+  this.$message({ showClose: true, message: msg, type: 'error' })
+}
+
+Vue.prototype.msgInfo = function (msg) {
+  this.$message.info(msg)
+}
+
+Vue.use(permission)
+
+Vue.use(Element, {
+  size: Cookies.get('size') || 'medium' // set element-ui default size
+})
+Vue.use(VueDND)
+
+// console.info(`欢迎使用go-admin，谢谢您对我们的支持，在使用过程中如果有什么问题，
+// 请访问https://github.com/go-admin-team/go-admin 或者
+//  https://github.com/go-admin-team/go-admin-ui 向我们反馈，
+//  谢谢！`)
+
+// register global utility filters
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 new Vue({
-  components: { App },
+  el: '#app',
   router,
   store,
-  template: '<App/>'
-}).$mount('#app')
+  render: h => h(App)
+})
